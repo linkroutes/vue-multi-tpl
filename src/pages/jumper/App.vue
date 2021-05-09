@@ -11,6 +11,7 @@
 </script>
 
 <style lang="scss">
+  @import '@/assets/scss/app.scss';
   .page-jumper{
 
   }

@@ -2,6 +2,9 @@
   <div class="page-index">
     首页
     <p>{{loadingTxt}}</p>
+    <br/>
+    <br/>
+    <img src="" class="avatar">
   </div>
 </template>
 
@@ -46,5 +49,13 @@
 </script>
 
 <style lang="scss" >
-
+  @import '@/assets/scss/app.scss';
+  .page-index{
+    .avatar{
+      width: 2rem;
+      height: 2rem;
+      @include gPlaceholder();
+      margin: 0 auto;
+    }
+  }
 </style>

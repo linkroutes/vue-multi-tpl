@@ -54,5 +54,13 @@ module.exports = {
   pages: {
     index: createPage('index', '首页'),
     jumper: createPage('jumper', '跳转页'),
-  }
+  },
+  css: {
+    loaderOptions: {
+      scss: {
+        // prependData: `@import "@/assets/scss/global.scss";` // 8.x之前的写法
+        additionalData: `@import "@/assets/scss/global.scss";`
+      },
+    }
+  },
 }
