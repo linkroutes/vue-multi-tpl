@@ -23,27 +23,20 @@
       }
     },
     created(){
-      this.preload(()=>{
-        Toast('加载完毕!')
+      this.$tool.preload({
+        list:[
+          {src:require("../images/hi.png")},
+        ],
+        progress:(percent)=>{
+          this.loadingTxt = percent;
+        },
+        success:()=>{
+          Toast('加载完毕!')
+        },
       })
     },
     methods:{
-      preload(cb){
-        let list=[
-          {src:require("../images/hi.png")},
-        ]
-
-        const loader = new createjs.LoadQueue(false);
-        loader.loadManifest(list);
-        loader.on("progress",(p)=>{
-            let percent = parseInt(p.progress*100);
-            this.loadingTxt = percent;
-        });
-
-        loader.on("complete",()=>{
-          cb && cb()
-        });
-      },
+      
     }
   }
 </script>

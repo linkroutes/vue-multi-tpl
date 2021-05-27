@@ -18,8 +18,10 @@
       window.scrollLock && e.preventDefault();
     }, { passive: false })
 
-    window.pageRadio = +(rootEle.clientWidth / rootEle.clientHeight).toFixed(2); // 用于页面缩放
-    window.maxRadio = 0.56;
+    window.psdRadio = (750 / 1450).toFixed(2) // iphoneX设计稿标准
+    window.pageRadio = +(rootEle.clientWidth / rootEle.clientHeight).toFixed(2)
+    window.maxRadio = 0.56
+    console.log('psdRadio:', psdRadio, 'pageRadio:', pageRadio, 'maxRadio:', maxRadio);
   </script>
 </head>
 <body>
