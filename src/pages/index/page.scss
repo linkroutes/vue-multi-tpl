@@ -1,0 +1,8 @@
+.page-index{
+  .avatar{
+    width: 2rem;
+    height: 2rem;
+    @include gPlaceholder();
+    margin: 0 auto;
+  }
+}
