@@ -9,3 +9,6 @@ npm run dev // 默认开发环境+vconsole调试
 npm run build // 默认打包处理+去除console打印
 npm run alpha // 默认打包处理+vconsole调试
 ```
+
+## 备注
+此分支为纯净分支
