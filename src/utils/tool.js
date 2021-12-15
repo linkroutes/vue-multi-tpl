@@ -51,5 +51,43 @@ export default {
       if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
     }
     return null;
+  },
+  //埋点
+  init() {
+    let body = document.querySelector('html');
+    body.addEventListener('click', (e) => {
+      this.dispatch(e)
+    }, false)
+  },
+  getTarget(e) {
+    let target = null;
+    let eleArray = Array.from(e.path || e.composedPath());
+    for (let index = 0; index < eleArray.length; index++) {
+      const element = eleArray[index];
+      if (element.dataset && element.dataset.points) {
+        target = element
+        break;
+      }
+    }
+    return target
+  },
+  _parse(data) {
+    if ( data.indexOf("{")!=-1 && data.indexOf("}") !=-1) {
+      return (new Function("return " + data))()
+    } else {
+      return data
+    }
+  },
+  dispatch(e) {
+    const path = e.path || e.composedPath();
+    if (path && path.length) {
+      let target = this.getTarget(e);
+      if (target) {
+        let data = this._parse(target.dataset.points);
+        data = data.split(',');
+        console.log('埋点的数据为：', ['_trackEvent', ...data])
+        window._czc && window._czc.push(['_trackEvent',...data]);
+      }
+    }
   }
 }
