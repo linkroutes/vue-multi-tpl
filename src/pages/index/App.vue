@@ -85,7 +85,7 @@ export default {
   created() {
     this.testMode = TESTMODE;
     // 埋点事件注册，使用方法在标签加：data-points="shareSuccess（事件名）,微信分享成功（事件中文解释）,其他参数"
-    this.$tool.init();
+    // this.$tool.uploadPoint();
   },
   mounted() {
     let urlData = this.$tool.parseURL(location.href).params;

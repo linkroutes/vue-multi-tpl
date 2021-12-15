@@ -53,7 +53,7 @@ export default {
     return null;
   },
   //埋点
-  init() {
+  uploadPoint() {
     let body = document.querySelector('html');
     body.addEventListener('click', (e) => {
       this.dispatch(e)
