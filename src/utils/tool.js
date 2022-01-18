@@ -1,15 +1,22 @@
 export default {
   preload(config) {
-    const loader = new createjs.LoadQueue(false);
-    loader.loadManifest(config.list);
-    loader.on("progress", (p) => {
-      let percent = parseInt(p.progress * 100);
+    let _imgArr =config.list
+    let loader = new PxLoader();
+    for (let index = 0; index < _imgArr.length; index++) {
+      const img = _imgArr[index].src;
+      loader.addImage(img);
+    }
+
+    loader.addProgressListener((e)=>{
+      let percent = ~~((e.completedCount / e.totalCount)*100)
       config.progress && config.progress(percent)
+    })
+
+    loader.addCompletionListener(()=>{
+      config.success &&  config.success()
     });
 
-    loader.on("complete", () => {
-      config.success && config.success()
-    });
+    loader.start();
   },
   parseURL(url) {
     let a = document.createElement('a');
@@ -72,7 +79,7 @@ export default {
     return target
   },
   _parse(data) {
-    if ( data.indexOf("{")!=-1 && data.indexOf("}") !=-1) {
+    if (data.indexOf("{") != -1 && data.indexOf("}") != -1) {
       return (new Function("return " + data))()
     } else {
       return data
@@ -86,7 +93,7 @@ export default {
         let data = this._parse(target.dataset.points);
         data = data.split(',');
         console.log('埋点的数据为：', ['_trackEvent', ...data])
-        window._czc && window._czc.push(['_trackEvent',...data]);
+        window._czc && window._czc.push(['_trackEvent', ...data]);
       }
     }
   }
