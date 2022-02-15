@@ -33,15 +33,14 @@ export default {
   name: "pageIndex",
   data() {
     return {
+      actId:null, // 记得和后端确认活动id
       loadingTxt: 0,
       pageScale: 1,
       cssText: "",
       testMode: false,
       // 接口
-      root:
-        PAGEURL.indexOf("//csbj") > -1
-          ? "https://csbj.linkroutes.com/api/"
-          : "https://t-csbj.linkroutes.com/api/",
+      // root: PAGEURL.indexOf("//ys.linkroutes") > -1 ? "https://ys.linkroutes.com/api/" : "https://t-csbj.linkroutes.com/api/", // 宜尚正式环境,测试环境都是t-csbj
+      root: PAGEURL.indexOf("//csbj.linkroutes") > -1 ? "https://csbj.linkroutes.com/api/" : "https://t-csbj.linkroutes.com/api/", // 城市便捷正式环境,测试环境都是t-csbj
       auth: "wx/authorize",
       signature: "wx/signature",
       userInfo: "user/info",
@@ -75,7 +74,7 @@ export default {
         },
       },
       openId: "",
-      token: "",
+      token: "", // 这个变量作废
       sid: "",
       username: "测试狗",
       avatar: "https://img01.yzcdn.cn/vant/cat.jpeg",
@@ -141,7 +140,7 @@ export default {
     go2auth(url) {
       console.log("跳转前的url:", url);
       let target =
-        this.root + this.auth + "?redirect=" + encodeURIComponent(url);
+        this.root + this.auth + "?"+(this.actId? `actId=${this.actId}&` :'' )+"redirect=" + encodeURIComponent(url);
       location.replace(target);
     },
     checkAuth(openId, token) {
@@ -171,7 +170,7 @@ export default {
         url: this.root + this.userInfo,
         params: {
           openId,
-          token,
+          actId: this.actId
         },
       })
         .then((data) => {
