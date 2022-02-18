@@ -4,7 +4,8 @@
     <p>{{ loadingTxt }}</p>
     <br />
     <br />
-    <img src="" class="avatar" data-points="shareSuccess,微信分享成功"/>
+    <img :src="require('../images/hi.jpg?inline')" class="avatar" data-points="shareSuccess,微信分享成功"/>
+    <img class="avatar" :src="require('../images/hi.jpg')"/>
   </div>
 </template>
 
@@ -110,7 +111,7 @@ export default {
   methods: {
     init(cb) {
       this.$tool.preload({
-        list: [{ src: require("../images/hi.png") }],
+        list: [{ src: require("../images/hi.jpg") }],
         progress: (percent) => {
           this.loadingTxt = percent;
         },

@@ -22,15 +22,40 @@ module.exports = {
       // config.optimization.delete('splitChunks')
       config.optimization.minimize(true);
     }
-    if (isAlpha) {
-      config.plugin('define').tap(args => {
-        const obj = {
-          packTime: new Date().toString()
-        }
-        args[0].kmspDevConfig = JSON.stringify(obj);
-        return args;
+
+    config.module
+      .rule('images')
+      .uses.clear()
+
+    config.module
+      .rule("images")
+      .oneOf("inline")
+      .resourceQuery(/inline/)
+      .use("inline-url-loader")
+      .loader(require.resolve("url-loader"))
+      .options({
+        limit: 4096000,
+        fallback: {
+          loader: require.resolve("file-loader"),
+        },
       })
-    }
+      .end()
+      .end()
+      .oneOf("default")
+      .use("url-loader")
+      .loader("url-loader")
+      .options({
+        limit: 4096,
+        esModule: false,
+        fallback: {
+          loader: require.resolve("file-loader"),
+          options: {
+            name: "img/[name].[hash:8].[ext]",
+          },
+        },
+      })
+      .end()
+      .end();
   },
   configureWebpack: (config) => {
 
