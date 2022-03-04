@@ -260,5 +260,5 @@ export default {
 
 <style lang="scss" >
 @import "@/assets/scss/app.scss";
-@import "./page.scss";
+@import "./index.scss";
 </style>
