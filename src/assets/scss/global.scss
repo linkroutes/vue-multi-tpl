@@ -14,9 +14,9 @@
   background-size: $size;
   background-color: #F0F0F0;
   object-fit: cover;
-  &[src^='http']{
-    background-image: none;
-  }
+  // &[src^='http']{
+  //   background-image: none;
+  // }
 }
 
 @mixin gSetBg($url,$size:100%) {

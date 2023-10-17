@@ -23,6 +23,8 @@ module.exports = {
       config.optimization.minimize(true);
     }
 
+
+    // 重写图片处理规则
     config.module
       .rule('images')
       .uses.clear()
@@ -30,11 +32,10 @@ module.exports = {
     config.module
       .rule("images")
       .oneOf("inline")
-      .resourceQuery(/inline/)
+      .resourceQuery(/inline/) // 图片?inline 会被强制内联(base64)
       .use("inline-url-loader")
       .loader(require.resolve("url-loader"))
       .options({
-        limit: 4096000,
         fallback: {
           loader: require.resolve("file-loader"),
         },
@@ -45,7 +46,7 @@ module.exports = {
       .use("url-loader")
       .loader("url-loader")
       .options({
-        limit: 4096,
+        limit: 0, // 剩余的图片无论大小都不转化成base64
         esModule: false,
         fallback: {
           loader: require.resolve("file-loader"),
