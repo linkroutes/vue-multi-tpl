@@ -22,15 +22,41 @@ module.exports = {
       // config.optimization.delete('splitChunks')
       config.optimization.minimize(true);
     }
-    if (isAlpha) {
-      config.plugin('define').tap(args => {
-        const obj = {
-          packTime: new Date().toString()
-        }
-        args[0].kmspDevConfig = JSON.stringify(obj);
-        return args;
+
+
+    // 重写图片处理规则
+    config.module
+      .rule('images')
+      .uses.clear()
+
+    config.module
+      .rule("images")
+      .oneOf("inline")
+      .resourceQuery(/inline/) // 图片?inline 会被强制内联(base64)
+      .use("inline-url-loader")
+      .loader(require.resolve("url-loader"))
+      .options({
+        fallback: {
+          loader: require.resolve("file-loader"),
+        },
       })
-    }
+      .end()
+      .end()
+      .oneOf("default")
+      .use("url-loader")
+      .loader("url-loader")
+      .options({
+        limit: 0, // 剩余的图片无论大小都不转化成base64
+        esModule: false,
+        fallback: {
+          loader: require.resolve("file-loader"),
+          options: {
+            name: "img/[name].[hash:8].[ext]",
+          },
+        },
+      })
+      .end()
+      .end();
   },
   configureWebpack: (config) => {
 
