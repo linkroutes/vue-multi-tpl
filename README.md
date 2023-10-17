@@ -18,3 +18,4 @@ npm run alpha // 默认打包处理+vconsole调试
 - main.js全局使用vant
 - html模板使用一些js cdn
 - 图片处理规则
+- vw+rem
