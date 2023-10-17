@@ -6,8 +6,6 @@
     <br/>
     <img :src="require('../images/hi.png')" class="avatar">
     <img :src="require('../images/hi.png?inline')" class="avatar">
-    <img src="https://qdact.pcauto.com.cn/byd-ocean-act/front/img/part1.713a9376.jpg?inline" class="avatar">
-
     <br>
     <div  class="bg-inline"></div>
   </div>
