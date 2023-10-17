@@ -8,11 +8,21 @@
   <title>
     <%= htmlWebpackPlugin.options.title %>
   </title>
+  <!-- 按需添加 -->
+  <!-- animate.css v3.6.2 -->
+  <!-- 效果预览 https://test.linkroutes.com/lib/animate/ -->
+  <!-- <link rel="stylesheet" href="https://js.3conline.com/krpano/lib/animate.css"> -->
+
+  <!-- quill富文本编辑器css -->
+  <!-- <link rel="stylesheet" href="https://js.3conline.com/krpano/lib/quill.1.3.6.core.css"> -->
+  <link rel="stylesheet" href="https://js.3conline.com/krpano/lib/vant@2.12.54_lib_index.css">
+
   <script>
     (function (l, e) { function g() { var a = d.getBoundingClientRect().width; e || (e = 540); a > e && (a = e); h.innerHTML = "html{font-size:" + 100 * a / l + "px;}" } var a = document, k = window, d = a.documentElement, b, h = document.createElement("style"), f; if (b = a.querySelector('meta[name="viewport"]')) b.setAttribute("content", "width=device-width,initial-scale=1,maximum-scale=1.0,user-scalable=no,viewport-fit=cover"); else if (b = a.createElement("meta"), b.setAttribute("name", "viewport"), b.setAttribute("content", "width=device-width,initial-scale=1,maximum-scale=1.0,user-scalable=no,viewport-fit=cover"), d.firstElementChild) d.firstElementChild.appendChild(b); else { var c = a.createElement("div"); c.appendChild(b); a.write(c.innerHTML); c = null } g(); d.firstElementChild ? d.firstElementChild.appendChild(h) : (c = a.createElement("div"), c.appendChild(h), a.write(c.innerHTML), c = null); k.addEventListener("resize", function () { clearTimeout(f); f = setTimeout(g, 300) }, !1); k.addEventListener("pageshow", function (a) { a.persisted && (clearTimeout(f), f = setTimeout(g, 300)) }, !1); "complete" === a.readyState ? a.body.style.fontSize = "16px" : a.addEventListener("DOMContentLoaded", function (b) { a.body.style.fontSize = "16px" }, !1) })(750, 750);
   </script>
   <script>
-    window.scrollLock = true
+    // 按需设置
+    window.scrollLock = false
     let rootEle = document.documentElement
     rootEle.addEventListener('touchmove', (e) => { // 禁止页面下拉
       window.scrollLock && e.preventDefault();
@@ -27,7 +37,11 @@
 <body>
   <!-- app -->
   <div id="app"></div>
-  <script src="PxLoader.js"></script>
-  <script src="PxLoaderImage.js"></script>
+  <script src="https://js.3conline.com/krpano/lib/PxLoader.js"></script>
+  <script src="https://js.3conline.com/krpano/lib/PxLoaderImage.js"></script>
+
+  <!-- 按需添加 -->
+  <!-- <script src="https://js.3conline.com/krpano/lib/md5.js"></script> -->
+  <!-- <script src="https://js.3conline.com/krpano/lib/html2canvas.min.js"></script> -->
 </body>
 </html>

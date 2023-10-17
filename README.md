@@ -12,3 +12,8 @@ npm run alpha // 默认打包处理+vconsole调试
 
 ## 备注
 此分支为纯净分支
+
+一些优化
+- utils模块拆分
+- main.js全局使用vant
+- html模板使用一些js cdn

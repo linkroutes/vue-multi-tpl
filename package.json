@@ -1,5 +1,5 @@
 {
-  "name": "vue_multipages",
+  "name": "vue_multipages-tpl",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -11,6 +11,7 @@
   "dependencies": {
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
+    "errno": "^1.0.0",
     "vant": "^2.12.4",
     "vue": "^2.6.11"
   },

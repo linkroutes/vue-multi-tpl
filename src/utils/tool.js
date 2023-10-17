@@ -1,23 +1,4 @@
 export default {
-  preload(config) {
-    let _imgArr =config.list
-    let loader = new PxLoader();
-    for (let index = 0; index < _imgArr.length; index++) {
-      const img = _imgArr[index].src;
-      loader.addImage(img);
-    }
-
-    loader.addProgressListener((e)=>{
-      let percent = ~~((e.completedCount / e.totalCount)*100)
-      config.progress && config.progress(percent)
-    })
-
-    loader.addCompletionListener(()=>{
-      config.success &&  config.success()
-    });
-
-    loader.start();
-  },
   parseURL(url) {
     let a = document.createElement('a');
     a.href = url;
@@ -59,13 +40,6 @@ export default {
     }
     return null;
   },
-  //埋点
-  uploadPoint() {
-    let body = document.querySelector('html');
-    body.addEventListener('click', (e) => {
-      this.dispatch(e)
-    }, false)
-  },
   getTarget(e) {
     let target = null;
     let eleArray = Array.from(e.path || e.composedPath());
@@ -85,16 +59,5 @@ export default {
       return data
     }
   },
-  dispatch(e) {
-    const path = e.path || e.composedPath();
-    if (path && path.length) {
-      let target = this.getTarget(e);
-      if (target) {
-        let data = this._parse(target.dataset.points);
-        data = data.split(',');
-        console.log('埋点的数据为：', ['_trackEvent', ...data])
-        window._czc && window._czc.push(['_trackEvent', ...data]);
-      }
-    }
-  }
+
 }

@@ -9,11 +9,7 @@
 </template>
 
 <script>
-  import axios from 'axios'
-  import qs from 'qs'
 
-  import Toast from 'vant/lib/toast';
-  import 'vant/lib/toast/style';
 
   export default {
     name:'pageIndex',
@@ -23,7 +19,7 @@
       }
     },
     created(){
-      this.$tool.preload({
+      this.$tool.preload.init({
         list:[
           {src:require("../images/hi.png")},
         ],
@@ -31,12 +27,12 @@
           this.loadingTxt = percent;
         },
         success:()=>{
-          Toast('加载完毕!')
+          this.$toast('加载完毕!')
         },
       })
     },
     methods:{
-      
+
     }
   }
 </script>
