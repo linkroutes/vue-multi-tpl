@@ -19,3 +19,4 @@ npm run alpha // 默认打包处理+vconsole调试
 - html模板使用一些js cdn
 - 图片处理规则
 - vw+rem
+- env配置文件
