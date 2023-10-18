@@ -37,8 +37,7 @@ export default {
       pageScale: 1,
       cssText: "",
       testMode: false,
-
-      root: PAGEURL.indexOf("//csbj.linkroutes") > -1 ? "https://csbj.linkroutes.com/api/" : "https://t-csbj.linkroutes.com/api/", // 城市便捷正式环境,测试环境都是t-csbj
+      root: process.env.VUE_APP_BASE_URL,
       auth: "wx/authorize",
       signature: "wx/signature",
       userInfo: "user/info",

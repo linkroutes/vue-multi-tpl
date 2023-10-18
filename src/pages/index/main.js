@@ -8,7 +8,7 @@ Vue.use(Toast);
 const vp = Vue.prototype
 vp.$tool = TOOL
 Vue.config.productionTip = false
-
+console.log(`process.env`, process.env);
 new Vue({
   render: h => h(App)
 }).$mount('#app')
