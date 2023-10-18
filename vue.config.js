@@ -1,6 +1,7 @@
 const isProduction = process.env.NODE_ENV === 'production';
 const argv = require('minimist')(process.argv.slice(2));
 const isAlpha = !!argv.v;
+const IMG_CDN =!!argv.cdn ? '图片cdn地址' :'';  // 按需填写图片cdn地址
 const vConsolePlugin = require('vconsole-webpack-plugin')
 let force = false;
 
@@ -51,6 +52,7 @@ module.exports = {
         fallback: {
           loader: require.resolve("file-loader"),
           options: {
+            publicPath: IMG_CDN,
             name: "img/[name].[hash:8].[ext]",
           },
         },
