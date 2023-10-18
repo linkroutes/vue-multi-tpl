@@ -1,3 +1,4 @@
+// 封装一些常用的业务逻辑
 export default {
   parseURL(url) {
     let a = document.createElement('a');
@@ -59,5 +60,4 @@ export default {
       return data
     }
   },
-
 }
